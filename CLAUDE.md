@@ -36,6 +36,10 @@ CI builds with `msbuild Screenbox.Core.Tests\Screenbox.Core.Tests.csproj -p:Conf
 
 **Assets**: icon fonts from `assets/fonts/` → `pwsh ./scripts/Generate-Fonts.ps1 -Publish`; Lottie JSON in `assets/animations/` → `pwsh ./scripts/ConvertFrom-Lottie.ps1` (generates C# into `Screenbox/Assets/Animations/`).
 
+**Downloader tools**: `pwsh ./scripts/Get-DownloaderTools.ps1` fetches yt-dlp, ffmpeg (shared build) and Deno into `Screenbox.Downloader/tools/` (git-ignored). The app build runs it automatically when they are missing.
+
+**Releases** (this fork): `pwsh ./scripts/Publish-Release.ps1 -Version 1.2.3 -Notes "..."` builds a signed Release `.msixbundle` with the fork identity `Nightmare33n.BetterScreenbox`, then creates the GitHub release on `Nightmare33n/Better-ScreenBox` that the in-app updater reads. It needs a clean, pushed commit, `gh` logged in, and `screenbox-release.pfx` + `screenbox-release.password` at the repo root (created on first run, git-ignored). Every release must use that same key or updates will not install. `-SkipUpload` builds into `artifacts/` only.
+
 ## Architecture
 
 Projects: `Screenbox` (UWP app: pages, controls, dialogs, localization, DI wiring in `App.xaml.cs`), `Screenbox.Core` (view models, services, contexts, coordinators, playback, models — no XAML), `Screenbox.UI` (shared templated controls/theme resources), `Screenbox.VideoView` (video surface), `Screenbox.Lively` (Lively Wallpaper integration), `Screenbox.Core.Tests`.
@@ -50,6 +54,18 @@ Layer roles and allowed dependencies (see `docs/PROJECT_STRUCTURE.md` → Archit
 - **Coordinators** (`Screenbox.Core/Coordinators/`) — stateful singletons owning watchers/timers/subscriptions, implement `IDisposable`, exposed via interface. `PlayQueueCoordinator` is the only writer of `PlayQueueContext` and handles `PlayMediaMessage`/`SetQueueMessage`/`ClearQueueMessage`/`QueueRequestMessage`. `LibraryCoordinator` drives library scans and pushes incremental `MusicLibrary`/`VideosLibrary` snapshots into `LibraryContext` via `IProgress<T>`.
 - **Services** (`Screenbox.Core/Services/`) — stateless; return data instead of writing Contexts. Always registered against an interface.
 - **Playback** (`Screenbox.Core/Playback/`) — `IMediaPlayer`/`IPlaybackItem` abstractions over LibVLC (`VlcMediaPlayer`, `VlcPlaybackItem`, track/chapter lists).
+
+### Downloads (YouTube via yt-dlp)
+
+The UWP app runs in an AppContainer and cannot start `yt-dlp.exe`, so `Screenbox.Downloader` (Native AOT `WinExe`) is packaged under `Downloader\` as a `desktop:Extension windows.fullTrustProcess` (`runFullTrust` capability) together with the tools. The `PublishDownloaderHelper` target in `Screenbox.csproj` publishes it and adds everything as `Content`.
+
+- IPC is files in `LocalState\Downloads\`: the app writes one JSON file per command into `commands\` (written as `.tmp`, then renamed); the helper is the **only writer** of `queue.json` (atomic replace) and refreshes a heartbeat every 2 s. Contracts live in `Screenbox.Core/Downloads/Contracts/DownloaderContracts.cs`, compiled into both projects, so keep that file BCL-only.
+- `DownloaderService` (send command, read snapshot, `FullTrustProcessLauncher`) → `DownloadsCoordinator` (750 ms poll timer, merges snapshot into `DownloadsContext`, relaunches the helper when jobs are pending and the heartbeat is stale) → `DownloadsPageViewModel` / `DownloadsPage`.
+- The helper runs one job at a time, keeps a writable copy of yt-dlp in `LocalState\Downloads\engine` and updates it with `yt-dlp -U` daily and once after a retryable failure, resumes interrupted jobs on start, and exits after 20 s idle. It logs to `helper.log` next to the queue. Run it unpackaged with `Screenbox.Downloader.exe --root <folder>` (tools must sit next to the exe).
+- Output goes to `Videos\Screenbox\[playlist]` (or `Music\Screenbox` for audio-only), so the library watchers pick files up.
+- Not available on Xbox (`DownloaderService.IsSupported`).
+
+`AppUpdateService` + singleton `AppUpdateViewModel` check `releases/latest` on GitHub at startup (release identity only, toggle in Settings), download the `.msixbundle` to TemporaryFolder and open it with App Installer.
 
 `MediaViewModel`, `AlbumViewModel`, `ArtistViewModel` are deliberately *observable domain entities* used across all layers (contexts, services, search results); they must not reference XAML types. `MusicLibrary`/`VideosLibrary` are immutable snapshots replaced wholesale on refresh.
 

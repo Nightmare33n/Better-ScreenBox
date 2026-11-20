@@ -42,6 +42,19 @@ Some notable features:
 
 And many more on the way!
 
+## Better Screenbox (this fork)
+
+This fork adds a **Downloads** page (menu item, `Ctrl+J`): paste a YouTube video or playlist link, pick a quality (best, up to 1080p/720p/480p, or audio only) and watch it offline. Videos are saved to `Videos\Screenbox` and audio to `Music\Screenbox`, so they also show up in the library. The queue keeps going when you close the app and resumes after a restart. Downloading uses a bundled [yt-dlp](https://github.com/yt-dlp/yt-dlp) that updates itself, with [FFmpeg](https://ffmpeg.org) and [Deno](https://deno.com). It needs Windows on a PC (not Xbox).
+
+The app also checks this repository's releases for updates and installs them from Settings or the banner at the top.
+
+### Install the fork
+
+1. Download `BetterScreenbox_<version>_Install.zip` from the [latest release](https://github.com/Nightmare33n/Better-ScreenBox/releases/latest) and extract it.
+2. Right-click `Install.ps1` and choose **Run with PowerShell**. The first time it asks to trust the release certificate (one admin prompt); after that, updates install from inside the app.
+
+The fork installs as **Better Screenbox** next to the Store version; it does not replace it.
+
 ## Install
 
 The recommended way to install Screenbox is through the [Microsoft Store](https://www.microsoft.com/store/apps/9NTSNMSVCB5L). Installing through the store ensures the app stays up to date automatically. You don't need a Microsoft account to download apps from the store. The app can also be installed through winget using the following command.

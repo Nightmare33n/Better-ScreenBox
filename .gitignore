@@ -361,3 +361,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Third-party binaries fetched by scripts/Get-DownloaderTools.ps1
+Screenbox.Downloader/tools/
+
+# Release signing key and its password (scripts/Publish-Release.ps1). Back these up outside the repo.
+screenbox-release.pfx
+screenbox-release.password
+# Release build output
+artifacts/
