@@ -5,7 +5,7 @@
   Screenbox
 </h1>
 <p align="center">
-  The modern media player for Windows
+  A fork for The modern media player for Windows made by Andre Aguirre
 </p>
 <p align="center">
   <a href='https://apps.microsoft.com/detail/9NTSNMSVCB5L?cid=storebadge&mode=mini'>
@@ -56,8 +56,8 @@ Feel free to open an issue if you want to report a bug, give feedback, or ask a 
 
 ### For Contributors
 
-- 📖 **[Contributing Guide](CONTRIBUTING.md)** - Complete guide for new contributors
-- 🏗️ **[Project Structure](docs/PROJECT_STRUCTURE.md)** - Detailed codebase architecture overview
+- **[Contributing Guide](CONTRIBUTING.md)** - Complete guide for new contributors
+- **[Project Structure](docs/PROJECT_STRUCTURE.md)** - Detailed codebase architecture overview
 
 ### Quick Start for Developers
 

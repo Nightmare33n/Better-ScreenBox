@@ -1,21 +1,21 @@
-# 🎬 Contributing to Screenbox
+# Contributing to Screenbox
 
 Thank you for your interest in contributing to Screenbox! This guide will help you get started with developing and contributing to the project.
 
-## 📋 Table of Contents
+## Table of Contents
 
-- [🚀 Getting Started](#-getting-started)
-- [⚙️ Development Environment Setup](#️-development-environment-setup)
-- [🏗️ Project Structure](#️-project-structure)
-- [🔄 Development Workflow](#-development-workflow)
-  - [📝 Creating an Issue](#-creating-an-issue)
-  - [🔀 Creating a Pull Request](#-creating-a-pull-request)
-- [🧹 Code Guidelines](#-code-guidelines)
-- [🧪 Testing](#-testing)
-- [🌍 Translation](#-translation)
-- [📤 Submitting Contributions](#-submitting-contributions)
+- [Getting Started](#getting-started)
+- [Development Environment Setup](#development-environment-setup)
+- [Project Structure](#project-structure)
+- [Development Workflow](#development-workflow)
+  - [Creating an Issue](#creating-an-issue)
+  - [Creating a Pull Request](#creating-a-pull-request)
+- [Code Guidelines](#code-guidelines)
+- [Testing](#testing)
+- [Translation](#translation)
+- [Submitting Contributions](#submitting-contributions)
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -35,7 +35,7 @@ Before you begin, ensure you have the following installed:
 > [!NOTE]
 > JetBrains Rider should also work but specific setup instructions aren't covered in this guide.
 
-## ⚙️ Development Environment Setup
+## Development Environment Setup
 
 ### 1. Fork and Clone the Repository
 
@@ -62,7 +62,7 @@ Before you begin, ensure you have the following installed:
 
 Visual Studio's built-in Git integration should be sufficient for most development workflows.
 
-## 🏗️ Project Structure
+## Project Structure
 
 The solution contains two main projects:
 
@@ -94,9 +94,9 @@ Screenbox.slnx
 
 For a detailed breakdown of the entire codebase architecture, see the [Project Structure documentation](docs/PROJECT_STRUCTURE.md).
 
-## 🔄 Development Workflow
+## Development Workflow
 
-### 📝 Creating an Issue
+### Creating an Issue
 
 Creating an issue is a great way to discuss bugs, feature requests, or enhancements with the maintainers and community.
 
@@ -113,7 +113,7 @@ Creating an issue is a great way to discuss bugs, feature requests, or enhanceme
 4. **Provide detailed information** as requested in the template
 5. **Be respectful** and constructive in your communication
 
-### 🔀 Creating a Pull Request
+### Creating a Pull Request
 
 1. **Create a new branch** from the main branch
    - Select "New Branch..." from the Git menu
@@ -137,7 +137,7 @@ For a full walkthrough of the process, see the [GitHub documentation](https://do
 - **Keep pull requests focused** on one feature or fix per PR when possible
 - **Update documentation** if your changes affect user-facing functionality
 
-## 🧹 Code Guidelines
+## Code Guidelines
 
 ### Code Formatting
 
@@ -148,23 +148,23 @@ Before committing changes, please:
 
 Your IDE should automatically use the project's `.editorconfig` rules for formatting.
 
-## 🧪 Testing
+## Testing
 
 ### Manual Testing Checklist
 
 When testing your changes:
 
-- ✅ **Functionality**: Verify your feature works as expected
-- ✅ **Performance**: Check that playback remains smooth
-- ✅ **Error handling**: Test edge cases and error scenarios
-- ✅ **Accessibility**: Test with different themes (light/dark/high contrast), screen scale, text scale factor, and gamepad navigation if possible
-- ✅ **UI**: Verify the interface looks correct and responsive
+- **Functionality**: Verify your feature works as expected
+- **Performance**: Check that playback remains smooth
+- **Error handling**: Test edge cases and error scenarios
+- **Accessibility**: Test with different themes (light/dark/high contrast), screen scale, text scale factor, and gamepad navigation if possible
+- **UI**: Verify the interface looks correct and responsive
 
 ### Platform Testing
 
 While not required, testing on different architectures (x64, x86, ARM64) and platforms (such as Xbox One and Xbox Series consoles) is helpful if you have access to these systems.
 
-## 🌍 Translation
+## Translation
 
 ### Adding New Strings
 
@@ -196,7 +196,7 @@ For detailed guidance on the translation workflow and language support, see:
 - [Translation section in the main README](README.md#translation).
 - [Microsoft Language Resources](https://learn.microsoft.com/en-us/globalization/reference/microsoft-language-resources) for comprehensive language and localization reference
 
-## 📤 Submitting Contributions
+## Submitting Contributions
 
 1. **Ensure your code builds** without errors or warnings
 2. **Test your changes** thoroughly using the testing checklist above
@@ -205,6 +205,6 @@ For detailed guidance on the translation workflow and language support, see:
 
 That's it! The maintainers will review your contribution and provide feedback if needed.
 
-## 🎉 Thank You!
+## Thank You!
 
-Every contribution helps make Screenbox better for everyone. Whether you're fixing bugs, adding features, improving documentation, or translating the app, your efforts are appreciated! 🙏
+Every contribution helps make Screenbox better for everyone. Whether you're fixing bugs, adding features, improving documentation, or translating the app, your efforts are appreciated! 

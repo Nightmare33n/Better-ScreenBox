@@ -724,7 +724,7 @@
 
                 <ctc:SettingsExpander
                     Margin="{StaticResource SettingsCardMargin}"
-                    Description="Made with ❤️ by Tung Huynh"
+                    Description="Made by Tung Huynh"
                     Header="{x:Bind strings:Resources.AppFriendlyName}"
                     HeaderIcon="{ui:BitmapIcon Source=ms-appx:///Assets/StoreLogo.png}">
                     <TextBlock

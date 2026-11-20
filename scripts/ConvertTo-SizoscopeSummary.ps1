@@ -36,14 +36,14 @@ param(
     [string]$OutputPath
 )
 
-function Get-DeltaEmoji {
+function Get-DeltaIndicator {
     param(
         [double]$Value
     )
 
-    if ($Value -eq 0) { return '🟰' }
-    if ($Value -lt 0) { return '📉' }
-    return '📈'
+    if ($Value -eq 0) { return '=' }
+    if ($Value -lt 0) { return 'down' }
+    return 'up'
 }
 
 function Add-SizeRow {
@@ -143,15 +143,15 @@ if (-not [double]::TryParse(
     throw "The total size delta could not be parsed from the input file."
 }
 
-$totalDeltaEmoji = Get-DeltaEmoji -Value $totalValue
+$totalDeltaIndicator = Get-DeltaIndicator -Value $totalValue
 $absoluteTotalValueText = [Math]::Abs($totalValue).ToString([System.Globalization.CultureInfo]::InvariantCulture)
 
 if ($totalValue -gt 0) {
-    $totalDelta = "$totalDeltaEmoji +$totalValueText $totalUnit"
+    $totalDelta = "$totalDeltaIndicator +$totalValueText $totalUnit"
 } elseif ($totalValue -lt 0) {
-    $totalDelta = "$totalDeltaEmoji -$absoluteTotalValueText $totalUnit"
+    $totalDelta = "$totalDeltaIndicator -$absoluteTotalValueText $totalUnit"
 } else {
-    $totalDelta = "$totalDeltaEmoji $totalValueText $totalUnit"
+    $totalDelta = "$totalDeltaIndicator $totalValueText $totalUnit"
 }
 
 foreach ($line in $lines) {
@@ -189,7 +189,7 @@ foreach ($line in $lines) {
 }
 
 $markdown = @(
-    '# 📊 Sizoscope Report',
+    '# Sizoscope Report',
     '',
     '## Summary',
     '',

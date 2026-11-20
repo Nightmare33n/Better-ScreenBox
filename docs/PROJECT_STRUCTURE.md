@@ -1,28 +1,28 @@
-# 📱 Screenbox Project Structure
+# Screenbox Project Structure
 
 This document provides a comprehensive overview of the Screenbox project's architecture, organization, and practical workflows for development.
 
-## 📋 Table of Contents
+## Table of Contents
 
-- [📖 Overview](#-overview)
-- [🏗️ Solution Structure](#️-solution-structure)
-- [🎨 View Layer](#-view-layer)
+- [Overview](#overview)
+- [Solution Structure](#solution-structure)
+- [View Layer](#view-layer)
   - [Visual States](#visual-states)
   - [Data Binding](#data-binding)
   - [Navigation System](#navigation-system)
   - [Localization System](#localization-system)
-- [🔄 ViewModel Layer](#-viewmodel-layer)
+- [ViewModel Layer](#viewmodel-layer)
   - [PropertyChanged Events](#propertychanged-events)
   - [Messaging System](#messaging-system)
-- [🔧 Model Layer](#-model-layer)
+- [Model Layer](#model-layer)
   - [Services Architecture](#services-architecture)
   - [Media Playback Engine](#media-playback-engine)
   - [Data Models and Persistence](#data-models-and-persistence)
-- [🏛️ Architecture Rules](#️-architecture-rules)
-- [🧰 Technology Stack](#️-technology-stack)
-- [📋 Development Guidelines](#-development-guidelines)
+- [Architecture Rules](#architecture-rules)
+- [Technology Stack](#technology-stack)
+- [Development Guidelines](#development-guidelines)
 
-## 📖 Overview
+## Overview
 
 Screenbox is a modern media player for Windows built using the Universal Windows Platform ([UWP](https://learn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide)) and LibVLCSharp. The application follows the Model-View-ViewModel ([MVVM](https://learn.microsoft.com/en-us/windows/uwp/data-binding/data-binding-and-mvvm)) design pattern with dependency injection for maintainable and testable code.
 
@@ -32,7 +32,7 @@ The architecture is built around clean separation of concerns:
 - **ViewModel Layer**: Presentation logic and data binding with MVVM
 - **Model Layer**: Business logic, services, and media playback engine
 
-## 🏗️ Solution Structure
+## Solution Structure
 
 The solution contains several projects organized for clear separation of concerns:
 
@@ -70,7 +70,7 @@ The Lively project provides integration support for Lively Wallpaper, allowing t
 
 The Core.Tests project contains unit and integration tests for the core logic, ensuring the correctness and reliability of the application's business logic.
 
-## 🎨 View Layer
+## View Layer
 
 The View layer is contained in the Screenbox project. This project consists primarily of XAML files and custom controls that define the user interface. `App.xaml` and the `Styles` folder contain resources referenced throughout the application, while the `App.xaml.cs` file serves as the main entry point and handles dependency injection configuration.
 
@@ -150,7 +150,7 @@ new KeyValuePair<Type, Type>(typeof(MusicPageViewModel), typeof(MusicPage))
 
 Screenbox implements comprehensive multi-language support through the Windows and ReswPlus resource system, following [UWP localization guidelines](https://learn.microsoft.com/en-us/windows/uwp/design/globalizing/globalizing-portal) and [ReswPlus guides](https://github.com/DotNetPlus/ReswPlus/wiki) for efficient localized resource management.
 
-## 🔄 ViewModel Layer
+## ViewModel Layer
 
 The ViewModel layer is contained in the Screenbox.Core project and serves as the intermediary between the UI components and business logic. ViewModels provide data sources for UI binding and encapsulate presentation logic while remaining independent of specific UI implementations.
 
@@ -221,7 +221,7 @@ Screenbox uses the [CommunityToolkit.Mvvm messaging system](https://learn.micros
 
 - **`SuspendingMessage.cs`**: Application lifecycle events
 
-## 🔧 Model Layer
+## Model Layer
 
 The Model layer contains the core business logic and is primarily located in the Screenbox.Core project. This layer consists of services, media playback components, and data models that provide the foundation for the application functionality.
 
@@ -341,7 +341,7 @@ The library tables in `screenbox.db` (SQLite, `LocalFolder`) are rebuildable cac
 | `playlists` | One row per saved playlist (id, display name, last-updated timestamp) |
 | `playlist_items` | Ordered list of media snapshots for each playlist; cascade-deleted with the parent playlist |
 
-## 🏛️ Architecture Rules
+## Architecture Rules
 
 ### Dependency Flow
 
@@ -367,7 +367,7 @@ The following table summarizes the allowed dependency directions between layers:
 - **Stateful coordinators** (e.g., `LibraryCoordinator`): own watchers/timers and manage subscriptions/lifetimes. Register as singletons and implement `IDisposable`.
 - **Stateful services** (e.g., `PlaybackProgressTracker`): own in-memory state but no platform subscriptions. Prefer a service interface; register as singletons.
 
-## 🧰 Technology Stack
+## Technology Stack
 
 - **UWP (Universal Windows Platform)**: Windows application framework providing native performance and system integration
 - **.NET 10**: Cross-platform runtime for building modern applications
@@ -405,7 +405,7 @@ The following table summarizes the allowed dependency directions between layers:
 - [Sentry.Extensions.Logging](https://www.nuget.org/packages/Sentry.Extensions.Logging/) - Sentry provider for `Microsoft.Extensions.Logging` with breadcrumb/event integration
 - [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/) - Unified structured logging API used across Core and app layers
 
-## 📋 Development Guidelines
+## Development Guidelines
 
 ### Code Organization
 
