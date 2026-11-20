@@ -1200,5 +1200,152 @@
   <data name="Dark" xml:space="preserve">
     <value>Dark</value>
   </data>
+  <data name="Downloads" xml:space="preserve">
+    <value>Downloads</value>
+  </data>
+  <data name="DownloadsLinkPlaceholder" xml:space="preserve">
+    <value>Paste a YouTube video or playlist link</value>
+  </data>
+  <data name="DownloadsLinkInvalid" xml:space="preserve">
+    <value>Enter a link that starts with https://</value>
+  </data>
+  <data name="DownloadButton" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="PasteLink" xml:space="preserve">
+    <value>Paste link</value>
+  </data>
+  <data name="DownloadQualityHeader" xml:space="preserve">
+    <value>Quality</value>
+  </data>
+  <data name="DownloadQualityBest" xml:space="preserve">
+    <value>Best available</value>
+  </data>
+  <data name="DownloadQuality1080p" xml:space="preserve">
+    <value>Up to 1080p</value>
+  </data>
+  <data name="DownloadQuality720p" xml:space="preserve">
+    <value>Up to 720p</value>
+  </data>
+  <data name="DownloadQuality480p" xml:space="preserve">
+    <value>Up to 480p</value>
+  </data>
+  <data name="DownloadQualityAudioOnly" xml:space="preserve">
+    <value>Audio only (M4A)</value>
+  </data>
+  <data name="DownloadStateResolving" xml:space="preserve">
+    <value>Reading link</value>
+  </data>
+  <data name="DownloadStateQueued" xml:space="preserve">
+    <value>Waiting</value>
+  </data>
+  <data name="DownloadStateDownloading" xml:space="preserve">
+    <value>Downloading</value>
+  </data>
+  <data name="DownloadStateProcessing" xml:space="preserve">
+    <value>Finishing up</value>
+  </data>
+  <data name="DownloadStateCompleted" xml:space="preserve">
+    <value>Downloaded</value>
+  </data>
+  <data name="DownloadStateFailed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="DownloadStateCanceled" xml:space="preserve">
+    <value>Canceled</value>
+  </data>
+  <data name="DownloadSizeProgress" xml:space="preserve">
+    <value>{0} of {1}</value>
+    <comment>#Format[String downloaded, String total]</comment>
+  </data>
+  <data name="DownloadSpeed" xml:space="preserve">
+    <value>{0}/s</value>
+    <comment>#Format[String size]</comment>
+  </data>
+  <data name="DownloadTimeLeft" xml:space="preserve">
+    <value>{0} left</value>
+    <comment>#Format[String duration]</comment>
+  </data>
+  <data name="RetryDownload" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="CancelDownload" xml:space="preserve">
+    <value>Cancel download</value>
+  </data>
+  <data name="RemoveFromList" xml:space="preserve">
+    <value>Remove from list</value>
+  </data>
+  <data name="ClearFinishedDownloads" xml:space="preserve">
+    <value>Clear finished</value>
+  </data>
+  <data name="DownloadsEmptyHeader" xml:space="preserve">
+    <value>Nothing downloaded yet</value>
+  </data>
+  <data name="DownloadsEmptyMessage" xml:space="preserve">
+    <value>Paste a link above to save it for watching offline. Videos are saved to Videos\Screenbox and audio to Music\Screenbox, so they also show up in your library.</value>
+  </data>
+  <data name="DownloadsUnsupportedMessage" xml:space="preserve">
+    <value>Downloading needs Screenbox running on a Windows PC.</value>
+  </data>
+  <data name="DownloadHelperLaunchFailed" xml:space="preserve">
+    <value>Windows did not let the download helper start. Try restarting the app.</value>
+  </data>
+  <data name="DownloadEngineVersion" xml:space="preserve">
+    <value>yt-dlp {0}</value>
+    <comment>#Format[String version]</comment>
+  </data>
+  <data name="DownloadEngineUpdating" xml:space="preserve">
+    <value>Updating yt-dlp</value>
+  </data>
+  <data name="UpdateDownloadEngine" xml:space="preserve">
+    <value>Update yt-dlp</value>
+  </data>
+  <data name="DownloadCompletedNotificationTitle" xml:space="preserve">
+    <value>Download complete</value>
+  </data>
+  <data name="DownloadFailedNotificationTitle" xml:space="preserve">
+    <value>Download failed</value>
+  </data>
+  <data name="UpdatesHeader" xml:space="preserve">
+    <value>Updates</value>
+  </data>
+  <data name="CheckForUpdatesAutomatically" xml:space="preserve">
+    <value>Check for updates when the app starts</value>
+  </data>
+  <data name="CheckForUpdatesButton" xml:space="preserve">
+    <value>Check for updates</value>
+  </data>
+  <data name="CurrentVersion" xml:space="preserve">
+    <value>Version {0}</value>
+    <comment>#Format[String version]</comment>
+  </data>
+  <data name="UpdateStatusChecking" xml:space="preserve">
+    <value>Checking for updates</value>
+  </data>
+  <data name="UpdateStatusUpToDate" xml:space="preserve">
+    <value>You have the latest version</value>
+  </data>
+  <data name="UpdateStatusFailed" xml:space="preserve">
+    <value>Could not check for updates. Check your connection and try again.</value>
+  </data>
+  <data name="UpdateStatusDownloading" xml:space="preserve">
+    <value>Downloading the update</value>
+  </data>
+  <data name="UpdateStatusInstalling" xml:space="preserve">
+    <value>The installer is open. Follow it to finish the update.</value>
+  </data>
+  <data name="UpdateAvailableTitle" xml:space="preserve">
+    <value>Update available</value>
+  </data>
+  <data name="UpdateAvailableMessage" xml:space="preserve">
+    <value>Version {0} is ready to install.</value>
+    <comment>#Format[String version]</comment>
+  </data>
+  <data name="InstallUpdateButton" xml:space="preserve">
+    <value>Download and install</value>
+  </data>
+  <data name="ReleaseNotes" xml:space="preserve">
+    <value>Release notes</value>
+  </data>
 </root>
 

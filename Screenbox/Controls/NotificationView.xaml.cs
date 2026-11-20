@@ -69,6 +69,8 @@ public sealed partial class NotificationView : UserControl
             NotificationKind.MediaLoadFailed => Strings.Resources.FailedToLoadMediaNotificationTitle,
             NotificationKind.SubtitleLoadFailed => Strings.Resources.FailedToLoadSubtitleNotificationTitle,
             NotificationKind.FrameSaveFailed => Strings.Resources.FailedToSaveFrameNotificationTitle,
+            NotificationKind.DownloadFailed => Strings.Resources.DownloadFailedNotificationTitle,
+            NotificationKind.DownloadCompleted => Strings.Resources.DownloadCompletedNotificationTitle,
             NotificationKind.FrameSaved => Strings.Resources.FrameSavedNotificationTitle,
             NotificationKind.SubtitleAdded => Strings.Resources.SubtitleAddedNotificationTitle,
             NotificationKind.PlaylistCreated => Strings.Resources.PlaylistCreatedNotificationTitle(title ?? string.Empty),
@@ -95,6 +97,8 @@ public sealed partial class NotificationView : UserControl
             NotificationKind.SubtitleLoadFailed => message,
             NotificationKind.FrameSaveFailed => message,
             NotificationKind.SubtitleAdded => message,
+            NotificationKind.DownloadFailed => message,
+            NotificationKind.DownloadCompleted => message,
             _ => null,
         };
     }

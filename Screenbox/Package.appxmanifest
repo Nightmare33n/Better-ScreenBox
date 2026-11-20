@@ -6,8 +6,10 @@
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
   xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
   xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4"
-  IgnorableNamespaces="uap uap3 uap5 mp desktop4">
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  IgnorableNamespaces="uap uap3 uap5 mp desktop desktop4 rescap">
 
   <Identity
     Name="Screenbox"
@@ -51,6 +53,8 @@
         <uap:SplashScreen Image="Assets\SplashScreen.png" uap5:Optional="true" />
       </uap:VisualElements>
       <Extensions>
+        <!-- yt-dlp cannot run inside the AppContainer; this helper runs it for the Downloads page. -->
+        <desktop:Extension Category="windows.fullTrustProcess" Executable="Downloader\Screenbox.Downloader.exe" />
         <uap:Extension Category="windows.fileTypeAssociation">
           <uap:FileTypeAssociation Name="3gpp">
             <uap:DisplayName>ms-resource:ManifestResources/FileDisplayName3GPP</uap:DisplayName>
@@ -565,5 +569,6 @@
     <Capability Name="privateNetworkClientServer" />
     <uap:Capability Name="picturesLibrary" />
     <uap:Capability Name="removableStorage" />
+    <rescap:Capability Name="runFullTrust" />
   </Capabilities>
 </Package>

@@ -14,6 +14,7 @@ public sealed partial class GeneralSettingsContext : SettingsContextBase<General
     private const string ShowRecentKey = "General/ShowRecent";
     private const string EnqueueAllInFolderKey = "General/EnqueueAllInFolder";
     private const string MultipleInstancesKey = "Advanced/MultipleInstances";
+    private const string CheckForUpdatesKey = "General/CheckForUpdates";
 
     public ElementTheme Theme
     {
@@ -43,6 +44,15 @@ public sealed partial class GeneralSettingsContext : SettingsContextBase<General
     {
         get => Get(MultipleInstancesKey, false);
         set => Set(MultipleInstancesKey, value);
+    }
+
+    /// <summary>
+    /// Gets or sets whether the app looks for a newer GitHub release when it starts.
+    /// </summary>
+    public bool CheckForUpdates
+    {
+        get => Get(CheckForUpdatesKey, true);
+        set => Set(CheckForUpdatesKey, value);
     }
 
     public GeneralSettingsContext(ISettingsStorage storage) : base(storage)

@@ -67,6 +67,28 @@
     <PRIResource Remove="Strings\ta-IN\*.resw" />
   </ItemGroup>
 
+  <!--
+    Download helper: a Native AOT full-trust exe plus yt-dlp, ffmpeg and Deno, packed under Downloader\.
+    The tools are not in git; scripts/Get-DownloaderTools.ps1 fetches them on the first build.
+  -->
+  <PropertyGroup Label="Downloader">
+    <DownloaderProject>$(MSBuildThisFileDirectory)..\Screenbox.Downloader\Screenbox.Downloader.csproj</DownloaderProject>
+    <DownloaderToolsDir>$(MSBuildThisFileDirectory)..\Screenbox.Downloader\tools\</DownloaderToolsDir>
+    <DownloaderPublishDir>$(MSBuildThisFileDirectory)obj\downloader\$(Platform)\</DownloaderPublishDir>
+  </PropertyGroup>
+
+  <Target Name="PublishDownloaderHelper" BeforeTargets="AssignTargetPaths" Condition="'$(DesignTimeBuild)' != 'true'">
+    <Exec Condition="!Exists('$(DownloaderToolsDir)yt-dlp.exe') Or !Exists('$(DownloaderToolsDir)ffmpeg.exe') Or !Exists('$(DownloaderToolsDir)deno.exe')" Command="pwsh -NoProfile -ExecutionPolicy Bypass -File &quot;$(MSBuildThisFileDirectory)..\scripts\Get-DownloaderTools.ps1&quot;" />
+    <!-- Always Release: the helper is tiny and Native AOT keeps it free of a separate .NET runtime. -->
+    <MSBuild Projects="$(DownloaderProject)" Targets="Restore" Properties="Configuration=Release;Platform=$(Platform);RuntimeIdentifier=win-$(Platform);MSBuildRestoreSessionId=$([System.Guid]::NewGuid())" RemoveProperties="PublishProfile;AppxBundle;AppxBundlePlatforms;UapAppxPackageBuildMode;AppxPackageSigningEnabled;PackageCertificateThumbprint;PackageCertificateKeyFile;GenerateAppxPackageOnBuild;AppxPackageDir" />
+    <MSBuild Projects="$(DownloaderProject)" Targets="Publish" Properties="Configuration=Release;Platform=$(Platform);RuntimeIdentifier=win-$(Platform);PublishDir=$(DownloaderPublishDir)" RemoveProperties="PublishProfile;AppxBundle;AppxBundlePlatforms;UapAppxPackageBuildMode;AppxPackageSigningEnabled;PackageCertificateThumbprint;PackageCertificateKeyFile;GenerateAppxPackageOnBuild;AppxPackageDir" />
+    <ItemGroup>
+      <_DownloaderFile Include="$(DownloaderPublishDir)Screenbox.Downloader.exe" />
+      <_DownloaderFile Include="$(DownloaderToolsDir)*.exe;$(DownloaderToolsDir)*.dll" />
+      <Content Include="@(_DownloaderFile)" Link="Downloader\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+  </Target>
+
   <ItemGroup>
     <ProjectReference Include="..\Screenbox.Core\Screenbox.Core.csproj" />
     <ProjectReference Include="..\Screenbox.Lively\Screenbox.Lively.csproj" />

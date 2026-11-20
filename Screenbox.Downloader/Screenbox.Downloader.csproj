@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Full-trust helper packaged with the app (desktop:Extension windows.fullTrustProcess).
+    The UWP app runs in an AppContainer and cannot start yt-dlp itself, so this process does it
+    and talks to the app through JSON files in the package LocalState folder.
+  -->
+  <PropertyGroup>
+    <!-- WinExe so no console window flashes when the app starts the helper. -->
+    <OutputType>WinExe</OutputType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platforms>x86;x64;arm64</Platforms>
+    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <RootNamespace>Screenbox.Downloader</RootNamespace>
+    <PublishAot>true</PublishAot>
+    <SelfContained>true</SelfContained>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <UseSystemResourceKeys>true</UseSystemResourceKeys>
+    <IsAotCompatible>true</IsAotCompatible>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Screenbox.Core\Downloads\Contracts\DownloaderContracts.cs" Link="Contracts\DownloaderContracts.cs" />
+  </ItemGroup>
+</Project>

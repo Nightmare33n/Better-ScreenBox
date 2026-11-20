@@ -21,6 +21,8 @@ public sealed partial class SettingsPage : Page
 
     internal SettingsPageViewModel ViewModel => (SettingsPageViewModel)DataContext;
 
+    internal AppUpdateViewModel Updates { get; } = Ioc.Default.GetRequiredService<AppUpdateViewModel>();
+
     internal CommonViewModel Common { get; }
 
     // The view model uses an empty string for "system default". Using that value directly in the

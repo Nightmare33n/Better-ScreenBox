@@ -43,6 +43,7 @@ public sealed partial class MainPageViewModel : ObservableRecipient,
     private readonly ISearchService _searchService;
     private readonly INavigationService _navigationService;
     private readonly ILibraryCoordinator _libraryCoordinator;
+    private readonly IDownloadsCoordinator _downloadsCoordinator;
     private readonly PlaylistsContext _playlistsContext;
     private readonly IPlaylistService _playlistService;
     private readonly ILogger<MainPageViewModel> _logger;
@@ -58,12 +59,14 @@ public sealed partial class MainPageViewModel : ObservableRecipient,
     public MainPageViewModel(PlayerSettingsContext playerSettings, ISearchService searchService, INavigationService navigationService,
         LibraryContext libraryContext, ILibraryCoordinator libraryCoordinator,
         PlaylistsContext playlistsContext, IPlaylistService playlistService,
+        IDownloadsCoordinator downloadsCoordinator,
         ILogger<MainPageViewModel> logger)
     {
         _playerSettings = playerSettings;
         _searchService = searchService;
         _navigationService = navigationService;
         _libraryCoordinator = libraryCoordinator;
+        _downloadsCoordinator = downloadsCoordinator;
         _playlistsContext = playlistsContext;
         _playlistService = playlistService;
         _logger = logger;
@@ -220,6 +223,21 @@ public sealed partial class MainPageViewModel : ObservableRecipient,
             case PlaylistViewModel playlist:
                 _navigationService.Navigate(typeof(PlaylistDetailsPageViewModel), playlist);
                 break;
+        }
+    }
+
+    /// <summary>
+    /// Starts mirroring the download queue so downloads interrupted by closing the app resume on launch.
+    /// </summary>
+    public async Task ResumeDownloadsAsync()
+    {
+        try
+        {
+            await _downloadsCoordinator.StartAsync();
+        }
+        catch (Exception e)
+        {
+            _logger.LogWarning(e, "Could not resume downloads");
         }
     }
 

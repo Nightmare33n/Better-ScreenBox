@@ -719,6 +719,41 @@
                     </ctc:SettingsExpander.Items>
                 </ctc:SettingsExpander>
 
+                <!--  Updates section  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{x:Bind strings:Resources.UpdatesHeader}" />
+
+                <ctc:SettingsExpander
+                    Margin="{StaticResource SettingsCardMargin}"
+                    Description="{x:Bind helpers:DownloadLabelHelper.GetUpdateStatus(Updates.Status, Updates.AvailableVersionText), Mode=OneWay}"
+                    Header="{x:Bind helpers:DownloadLabelHelper.GetCurrentVersion(Updates.CurrentVersionText)}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE895;}">
+                    <interactivity:Interaction.Behaviors>
+                        <behaviors:SettingsExpanderXYNavigationBehavior />
+                    </interactivity:Interaction.Behaviors>
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <Button
+                            Command="{x:Bind Updates.InstallUpdateCommand}"
+                            Content="{x:Bind strings:Resources.InstallUpdateButton}"
+                            Style="{StaticResource AccentButtonStyle}"
+                            Visibility="{x:Bind Updates.IsUpdateAvailable, Mode=OneWay}" />
+                        <Button
+                            MinWidth="{StaticResource SettingsCardButtonMinWidth}"
+                            Command="{x:Bind Updates.CheckForUpdatesCommand}"
+                            Content="{x:Bind strings:Resources.CheckForUpdatesButton}" />
+                    </StackPanel>
+                    <ctc:SettingsExpander.Items>
+                        <ctc:SettingsCard Header="{x:Bind strings:Resources.CheckForUpdatesAutomatically}">
+                            <ToggleSwitch AutomationProperties.Name="{x:Bind strings:Resources.CheckForUpdatesAutomatically}" IsOn="{x:Bind Updates.CheckAutomatically, Mode=TwoWay}" />
+                        </ctc:SettingsCard>
+                        <ctc:SettingsCard HorizontalContentAlignment="Left" ContentAlignment="Vertical">
+                            <HyperlinkButton
+                                Margin="{StaticResource HyperlinkButtonInlineMargin}"
+                                Content="{x:Bind strings:Resources.ReleaseNotes}"
+                                NavigateUri="https://github.com/Nightmare33n/Better-ScreenBox/releases" />
+                        </ctc:SettingsCard>
+                    </ctc:SettingsExpander.Items>
+                </ctc:SettingsExpander>
+
                 <!--  About section  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{x:Bind strings:Resources.SettingsCategoryAbout}" />
 

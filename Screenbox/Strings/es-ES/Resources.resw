@@ -1196,5 +1196,146 @@
     <value>Increase {0}</value>
     <comment>#Format[String value]</comment>
   </data>
+  <data name="Downloads" xml:space="preserve">
+    <value>Descargas</value>
+  </data>
+  <data name="DownloadsLinkPlaceholder" xml:space="preserve">
+    <value>Pega el enlace de un video o playlist de YouTube</value>
+  </data>
+  <data name="DownloadsLinkInvalid" xml:space="preserve">
+    <value>Escribe un enlace que empiece con https://</value>
+  </data>
+  <data name="DownloadButton" xml:space="preserve">
+    <value>Descargar</value>
+  </data>
+  <data name="PasteLink" xml:space="preserve">
+    <value>Pegar enlace</value>
+  </data>
+  <data name="DownloadQualityHeader" xml:space="preserve">
+    <value>Calidad</value>
+  </data>
+  <data name="DownloadQualityBest" xml:space="preserve">
+    <value>Mejor disponible</value>
+  </data>
+  <data name="DownloadQuality1080p" xml:space="preserve">
+    <value>Hasta 1080p</value>
+  </data>
+  <data name="DownloadQuality720p" xml:space="preserve">
+    <value>Hasta 720p</value>
+  </data>
+  <data name="DownloadQuality480p" xml:space="preserve">
+    <value>Hasta 480p</value>
+  </data>
+  <data name="DownloadQualityAudioOnly" xml:space="preserve">
+    <value>Solo audio (M4A)</value>
+  </data>
+  <data name="DownloadStateResolving" xml:space="preserve">
+    <value>Leyendo enlace</value>
+  </data>
+  <data name="DownloadStateQueued" xml:space="preserve">
+    <value>En espera</value>
+  </data>
+  <data name="DownloadStateDownloading" xml:space="preserve">
+    <value>Descargando</value>
+  </data>
+  <data name="DownloadStateProcessing" xml:space="preserve">
+    <value>Finalizando</value>
+  </data>
+  <data name="DownloadStateCompleted" xml:space="preserve">
+    <value>Descargado</value>
+  </data>
+  <data name="DownloadStateFailed" xml:space="preserve">
+    <value>Falló</value>
+  </data>
+  <data name="DownloadStateCanceled" xml:space="preserve">
+    <value>Cancelado</value>
+  </data>
+  <data name="DownloadSizeProgress" xml:space="preserve">
+    <value>{0} de {1}</value>
+  </data>
+  <data name="DownloadSpeed" xml:space="preserve">
+    <value>{0}/s</value>
+  </data>
+  <data name="DownloadTimeLeft" xml:space="preserve">
+    <value>Faltan {0}</value>
+  </data>
+  <data name="RetryDownload" xml:space="preserve">
+    <value>Reintentar</value>
+  </data>
+  <data name="CancelDownload" xml:space="preserve">
+    <value>Cancelar descarga</value>
+  </data>
+  <data name="RemoveFromList" xml:space="preserve">
+    <value>Quitar de la lista</value>
+  </data>
+  <data name="ClearFinishedDownloads" xml:space="preserve">
+    <value>Limpiar terminadas</value>
+  </data>
+  <data name="DownloadsEmptyHeader" xml:space="preserve">
+    <value>Aún no hay descargas</value>
+  </data>
+  <data name="DownloadsEmptyMessage" xml:space="preserve">
+    <value>Pega un enlace arriba para guardarlo y verlo sin conexión. Los videos se guardan en Videos\Screenbox y el audio en Música\Screenbox, así también aparecen en tu biblioteca.</value>
+  </data>
+  <data name="DownloadsUnsupportedMessage" xml:space="preserve">
+    <value>Las descargas necesitan Screenbox en una PC con Windows.</value>
+  </data>
+  <data name="DownloadHelperLaunchFailed" xml:space="preserve">
+    <value>Windows no dejó iniciar el asistente de descargas. Prueba reiniciar la app.</value>
+  </data>
+  <data name="DownloadEngineVersion" xml:space="preserve">
+    <value>yt-dlp {0}</value>
+  </data>
+  <data name="DownloadEngineUpdating" xml:space="preserve">
+    <value>Actualizando yt-dlp</value>
+  </data>
+  <data name="UpdateDownloadEngine" xml:space="preserve">
+    <value>Actualizar yt-dlp</value>
+  </data>
+  <data name="DownloadCompletedNotificationTitle" xml:space="preserve">
+    <value>Descarga completa</value>
+  </data>
+  <data name="DownloadFailedNotificationTitle" xml:space="preserve">
+    <value>La descarga falló</value>
+  </data>
+  <data name="UpdatesHeader" xml:space="preserve">
+    <value>Actualizaciones</value>
+  </data>
+  <data name="CheckForUpdatesAutomatically" xml:space="preserve">
+    <value>Buscar actualizaciones al abrir la app</value>
+  </data>
+  <data name="CheckForUpdatesButton" xml:space="preserve">
+    <value>Buscar actualizaciones</value>
+  </data>
+  <data name="CurrentVersion" xml:space="preserve">
+    <value>Versión {0}</value>
+  </data>
+  <data name="UpdateStatusChecking" xml:space="preserve">
+    <value>Buscando actualizaciones</value>
+  </data>
+  <data name="UpdateStatusUpToDate" xml:space="preserve">
+    <value>Tienes la última versión</value>
+  </data>
+  <data name="UpdateStatusFailed" xml:space="preserve">
+    <value>No se pudo buscar actualizaciones. Revisa tu conexión e inténtalo de nuevo.</value>
+  </data>
+  <data name="UpdateStatusDownloading" xml:space="preserve">
+    <value>Descargando la actualización</value>
+  </data>
+  <data name="UpdateStatusInstalling" xml:space="preserve">
+    <value>El instalador está abierto. Síguelo para terminar la actualización.</value>
+  </data>
+  <data name="UpdateAvailableTitle" xml:space="preserve">
+    <value>Actualización disponible</value>
+  </data>
+  <data name="UpdateAvailableMessage" xml:space="preserve">
+    <value>La versión {0} está lista para instalarse.</value>
+  </data>
+  <data name="InstallUpdateButton" xml:space="preserve">
+    <value>Descargar e instalar</value>
+  </data>
+  <data name="ReleaseNotes" xml:space="preserve">
+    <value>Notas de la versión</value>
+  </data>
 </root>
 

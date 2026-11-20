@@ -160,6 +160,7 @@ sealed partial class App : Application
             new KeyValuePair<Type, Type>(typeof(ArtistsPageViewModel), typeof(ArtistsPage)),
             new KeyValuePair<Type, Type>(typeof(AlbumsPageViewModel), typeof(AlbumsPage)),
             new KeyValuePair<Type, Type>(typeof(NetworkPageViewModel), typeof(NetworkPage)),
+            new KeyValuePair<Type, Type>(typeof(DownloadsPageViewModel), typeof(DownloadsPage)),
             new KeyValuePair<Type, Type>(typeof(PlayQueuePageViewModel), typeof(PlayQueuePage)),
             new KeyValuePair<Type, Type>(typeof(SettingsPageViewModel), typeof(SettingsPage)),
             new KeyValuePair<Type, Type>(typeof(AlbumDetailsPageViewModel), typeof(AlbumDetailsPage)),

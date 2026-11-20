@@ -36,6 +36,8 @@ public sealed partial class MainPage : Page, IContentFrame
 
     private MainPageViewModel ViewModel => (MainPageViewModel)DataContext;
 
+    internal AppUpdateViewModel Updates { get; }
+
     private readonly Dictionary<string, Type> _pages;
     private readonly ILogger<MainPage> _logger;
 
@@ -50,12 +52,14 @@ public sealed partial class MainPage : Page, IContentFrame
             { "music", typeof(MusicPage) },
             { "queue", typeof(PlayQueuePage) },
             { "network", typeof(NetworkPage) },
+            { "downloads", typeof(DownloadsPage) },
             { "playlists", typeof(PlaylistsPage) },
             { "settings", typeof(SettingsPage) }
         };
 
         _logger = DefaultLogging.CreateLogger<MainPage>();
         DataContext = Ioc.Default.GetRequiredService<MainPageViewModel>();
+        Updates = Ioc.Default.GetRequiredService<AppUpdateViewModel>();
         ViewModel.PropertyChanged += ViewModel_PropertyChanged;
         ContentFrame.Navigating += ContentFrame_Navigating;
     }
@@ -101,6 +105,9 @@ public sealed partial class MainPage : Page, IContentFrame
             NavView.SelectedItem = NavView.MenuItems[0];
             _ = ViewModel.FetchLibraries();
         }
+
+        _ = ViewModel.ResumeDownloadsAsync();
+        _ = Updates.CheckOnStartupAsync();
     }
 
     private void ViewModel_PropertyChanged(object? sender, PropertyChangedEventArgs e)

@@ -44,6 +44,8 @@ public static class ServiceHelpers
         services.AddTransient<PlaylistViewModel>();
         services.AddTransient<PlaylistsPageViewModel>();
         services.AddTransient<SelectionViewModel>();
+        services.AddTransient<DownloadsPageViewModel>();
+        services.AddSingleton<AppUpdateViewModel>(); // Shared by the shell banner and the Settings page
         services.AddSingleton<CommonViewModel>();   // Shared between many pages
         services.AddSingleton<PlaybackSessionViewModel>(); // Playback customization settings; Avoid thread lock
         services.AddSingleton<VolumeViewModel>();   // Avoid thread lock
@@ -67,12 +69,14 @@ public static class ServiceHelpers
         services.AddSingleton<LibrarySettingsContext>();
         services.AddSingleton<PlaybackSettingsContext>();
         services.AddSingleton<GeneralSettingsContext>();
+        services.AddSingleton<DownloadsContext>();
 
         // Coordinators
         services.AddSingleton<ILibraryCoordinator, LibraryCoordinator>();
         services.AddSingleton<IPlayQueueCoordinator, PlayQueueCoordinator>();
         services.AddSingleton<IPlayQueueBufferManager, PlayQueueBufferManager>();
         services.AddSingleton<IPlaybackProgressTracker, PlaybackProgressTracker>();
+        services.AddSingleton<IDownloadsCoordinator, DownloadsCoordinator>();
 
         // Services
         services.AddSingleton<ISettingsStorage, SettingsStorage>();
@@ -89,5 +93,7 @@ public static class ServiceHelpers
         services.AddSingleton<IPlaylistService, PlaylistService>();
         services.AddSingleton<ISourceMetadataService, StorageMetadataService>();
         services.AddSingleton<IPlaybackMetadataService, VlcMetadataService>();
+        services.AddSingleton<IDownloaderService, DownloaderService>();
+        services.AddSingleton<IAppUpdateService, AppUpdateService>();
     }
 }
